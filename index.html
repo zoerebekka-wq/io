@@ -16,6 +16,12 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,10 +29,11 @@ body {
 /* HERO */
 .hero {
   width: 100%;
-  height: 100vh;
+  min-height: 100svh;
   background-image: url("https://images.squarespace-cdn.com/content/v1/6941333f600b1450049ae995/0c7547d6-b408-4d25-bc26-dec63a8b7987/Screenshot+2026-04-30+at+3.24.47%E2%80%AFPM.png?format=750w");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   position: relative;
 }
 
@@ -34,17 +41,20 @@ body {
 .book-btn {
   position: absolute;
   left: 50%;
-  bottom: 40px;
+  bottom: max(28px, env(safe-area-inset-bottom));
   transform: translateX(-50%);
   text-decoration: none;
   color: #ffffff;
-  font-size: clamp(18px, 2vw, 28px);
-  letter-spacing: 0.18em;
+  font-size: clamp(14px, 2vw, 24px);
+  letter-spacing: 0.14em;
   font-weight: 500;
+  white-space: nowrap;
+  z-index: 5;
 }
 
 /* BOOKING SECTION */
 .booking {
+  width: 100%;
   padding: 120px 20px;
   background: linear-gradient(
     180deg,
@@ -59,10 +69,11 @@ body {
 
 /* TITLE */
 .booking-title {
+  width: 100%;
   text-align: center;
   margin-bottom: 50px;
   font-size: clamp(18px, 4vw, 28px);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   color: #5e7480;
 }
 
@@ -84,18 +95,73 @@ body {
   display: block;
 }
 
-/* MOBILE */
+/* TABLET + MOBILE */
 @media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .book-btn {
+    bottom: 24px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
   .booking {
-    padding: 80px 15px;
+    padding: 56px 10px 70px;
+  }
+
+  .booking-title {
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    margin-bottom: 28px;
+    padding: 0 10px;
   }
 
   .calendly-wrapper {
-    border-radius: 28px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.07);
   }
 
   .calendly-wrapper iframe {
-    height: 900px;
+    width: 100%;
+    height: 980px;
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 430px) {
+  .hero {
+    min-height: 92svh;
+    background-position: center top;
+  }
+
+  .book-btn {
+    bottom: 18px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .booking {
+    padding: 44px 8px 60px;
+  }
+
+  .booking-title {
+    font-size: 17px;
+    letter-spacing: 0.09em;
+    margin-bottom: 22px;
+  }
+
+  .calendly-wrapper {
+    border-radius: 18px;
+  }
+
+  .calendly-wrapper iframe {
+    height: 1050px;
   }
 }
 </style>
@@ -103,23 +169,18 @@ body {
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <a href="#book" class="book-btn">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
 </section>
 
-<!-- BOOKING -->
 <section id="book" class="booking">
-
   <div class="booking-title">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</div>
 
   <div class="calendly-wrapper">
     <iframe src="https://calendly.com/astarterad/30min"></iframe>
   </div>
-
 </section>
 
-<!-- TIDIO -->
 <script src="//code.tidio.co/drtxmrtijuzcj8jred1fxhwcr3j5k03u.js" async></script>
 
 </body>
